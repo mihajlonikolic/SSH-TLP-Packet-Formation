@@ -1,8 +1,6 @@
 # SSH-TLP-Packet-Formation
 ### Introduction
 
-[Go to VM](http://{{ vm_ip('main') }}:8000/)
-
 This scenario should help students to understand how packet exchange by using SSH protocol actually works.
 
 ![SSH Transport Layer Protocol Packet Formation]( static/SSH.png)
