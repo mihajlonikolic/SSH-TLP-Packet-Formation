@@ -1,0 +1,37 @@
+<h3>Introduction</h3>
+<p><a href="http://{{ vm_ip('main') }}:8000/">Go to VM</a></p>
+<p>
+	This scenario should help students to understand how packet exchange by using SSH protocol actually works.
+</p>
+
+<figure>
+  	<img src=" static/SSH.png" height="50%" alt="SSH Transport Layer Protocol Packet Formation">  
+  	<figcaption>SSH Transport Layer Protocol Packet Formation <sup><a href="#fn1" id="ref1">1</a></sup> </figcaption>
+</figure>
+
+
+<p>
+	The scenario is a console application that provides the string preparation for safe sending via a computer network in a manner similar to the way in which packet is formed in the <i>SSH Transport Layer Protocol</i> step by step. <i>Compression</i> and <i>seq#</i> (schema <sup><a href="#fn1" id="ref1">1</a></sup>) are not implemented. The program is a string of arbitrary lengths that are being prepared for sending, and keys for encryption KE and KMAC for integrity protection. The pre-encoding string must be formatted by concatenating the following fields (see schema <sup><a href="#fn2" id="ref2">2</a></sup>):
+	<ul>
+ 		<li><b>pktl</b> - packet length in bytes, without pktl and MAC fields (<i>4 bytes</i>) </li>
+  		<li><b>pdl</b> - the length of the padding, adding that the total length of the given string would be an integer of the block size required by the block encoder (<i>1 byte</i>) </li>
+  		<li><b>payload</b> - set text (<i> > 1 byte</i>)</li>
+  		<li><b>padding</b> - add-on at the end of the given text so that the total length of the given string is an integer of the block size that requires a block encoder (<i> < 8 bytes</i>) </li>
+	</ul>
+</p>
+
+<p>
+	The formatted string is encrypted by using the <b>DES algorithm</b> in <b>CBC</b> mode. IV is generated as a random number. Formation of MAC by using HMAC-SHA1. CBC (<i>Cipher Block Chaining</i>) mode (schema below) is implemented directly in code step by step, without using any additional functions.
+</p>
+
+<figure>
+  	<img src=" static/CBC.jpg" alt="Cipher Block Chaining (CBC) mode encryption">
+  	<figcaption>Cipher Block Chaining (CBC) mode encryption <sup><a href="#fn2" id="ref2">2</a></sup> </figcaption>
+</figure>
+
+<p>
+    The student can see how the implementation of the CBC mode should look in practice, which helps him to understand how this type of encoding actually works.
+</p>
+
+<sup id="fn1">1. [Protocol Basics: Secure Shell Protocol - The Internet Protocol Journal, Volume 12, No.4 by William Stallings]<a href="#ref1" title="">↩</a></sup> <br>
+<sup id="fn2">2. <a href="https://de.wikipedia.org/wiki/Datei:CBC_decryption.svg">[https://de.wikipedia.org/wiki/Datei:CBC_decryption.svg]</a><a href="#ref2" title="">↩</a></sup>
