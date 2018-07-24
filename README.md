@@ -22,5 +22,5 @@ Cipher Block Chaining (CBC) mode encryption [2](#fn2)
 
 The student can see how the implementation of the CBC mode should look in practice, which helps him to understand how this type of encoding actually works.
 
-1\. \[Protocol Basics: Secure Shell Protocol - The Internet Protocol Journal, Volume 12, No.4 by William Stallings\][↩](#ref1)  
+1\. \[William Stallings. _CRYPTOGRAPHY AND NETWORK SECURITY PRINCIPLES AND PRACTICE_. 5th ed. Prentice Hall, 2011.\][↩](#ref1) 
 2\. [\[https://de.wikipedia.org/wiki/Datei:CBC_decryption.svg\]](https://de.wikipedia.org/wiki/Datei:CBC_decryption.svg)[↩](#ref2)
